@@ -27,6 +27,12 @@ FILES=(
     "extension.js"
     "utils.js"
     "metadata.json"
+    "AppUninstaller.js"
+    "CommandExecutor.js"
+    "DebAptHandler.js"
+    "FlatpakHandler.js"
+    "SnapHandler.js"
+    "translations.js"
 )
 
 # Copy necessary files from source directory

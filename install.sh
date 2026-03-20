@@ -30,8 +30,7 @@ mkdir -p "$EXTENSION_DIR"
 # Copiar archivos
 echo -e "\t3. Copying extension files..."
 cp metadata.json "$EXTENSION_DIR/"
-cp extension.js "$EXTENSION_DIR/"
-cp utils.js "$EXTENSION_DIR/"
+cp *.js "$EXTENSION_DIR/"
 
 # Copiar schemas if they exist, else skip
 if ls ../../schemas/*.xml 1> /dev/null 2>&1; then
