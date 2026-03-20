@@ -1,0 +1,9 @@
+{
+    "name": "Shell Easy Uninstaller",
+    "description": "Add an uninstall option to the right-click menu of applications in the App Grid and Dash.",
+    "uuid": "shell-easy-uninstaller@lsantiagoba",
+    "shell-version": [
+        "46"
+    ],
+    "url": ""
+}
