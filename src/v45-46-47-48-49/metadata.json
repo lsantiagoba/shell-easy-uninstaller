@@ -9,5 +9,9 @@
         "48",
         "49"
     ],
-    "url": "https://github.com/lsantiagoba/shell-easy-uninstaller"
+    "version": 1,
+    "url": "https://github.com/lsantiagoba/shell-easy-uninstaller",
+    "donations": {
+        "paypal": "leandrosb3"
+    }
 }
