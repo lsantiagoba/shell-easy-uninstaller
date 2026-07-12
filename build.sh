@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Build script - Copies source files from src/v45-46-47-48-49 to root for packaging
+# Build script - Copies source files from src/v45-46-47-48-49-50 to root for packaging
 # Usage: ./build.sh
 
-SRC_DIR="src/v45-46-47-48-49"
+SRC_DIR="src/v45-46-47-48-49-50"
 
 echo "🔨 Building extension..."
 echo ""

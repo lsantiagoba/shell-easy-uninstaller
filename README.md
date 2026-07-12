@@ -15,6 +15,7 @@ A GNOME Shell extension that adds a quick and convenient "Uninstall" option to t
 - GNOME 47
 - GNOME 48
 - GNOME 49
+- GNOME 50
 
 ## Installation
 

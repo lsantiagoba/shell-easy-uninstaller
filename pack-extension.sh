@@ -7,7 +7,7 @@ set -e
 EXTENSION_UUID="shell-easy-uninstaller@lsantiagoba"
 PACK_DIR="pack"
 OUTPUT_FILE="${EXTENSION_UUID}.zip"
-SOURCE_DIR="src/v45-46-47-48-49"
+SOURCE_DIR="src/v45-46-47-48-49-50"
 
 echo -e "\n\n\t~~~~~~~~~~~~~~~~ Shell Easy Uninstaller ~~~~~~~~~~~~~~~~\n"
 echo -e "\t📦 Packaging GNOME extension...\n"

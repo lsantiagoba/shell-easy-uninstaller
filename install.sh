@@ -22,7 +22,7 @@ echo -e "\tRunning installation script...\n"
 echo -e "\t1. GNOME Shell version $SHELL_VERSION detected"
 
 # All supported versions use the same codebase
-cd src/v45-46-47-48-49
+cd src/v45-46-47-48-49-50
 
 echo -e "\t2. Creating extension directory..."
 mkdir -p "$EXTENSION_DIR"
