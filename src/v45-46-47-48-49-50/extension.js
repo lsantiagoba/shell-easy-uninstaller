@@ -1,7 +1,9 @@
 import { AppMenu } from 'resource:///org/gnome/shell/ui/appMenu.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
-import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
-import { InjectionManager } from 'resource:///org/gnome/shell/extensions/extensionUtils.js';
+import {
+    Extension,
+    InjectionManager,
+} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 import { uninstallApp } from './utils.js';
 import { _t, translator } from './translations.js';

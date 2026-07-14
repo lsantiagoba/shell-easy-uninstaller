@@ -5,6 +5,9 @@ set -e
 
 EXTENSION_UUID="shell-easy-uninstaller@lsantiagoba"
 EXTENSION_DIR="$HOME/.local/share/gnome-shell/extensions/$EXTENSION_UUID"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE_DIR="$SCRIPT_DIR/src/v45-46-47-48-49-50"
+SCHEMA_DIR="$SCRIPT_DIR/schemas"
 
 # Detect GNOME Shell version
 SHELL_VERSION=$(gnome-shell --version | cut -d ' ' -f3 | cut -d '.' -f1)
@@ -21,22 +24,20 @@ echo -e "\n\n\t~~~~~~~~~~~~~~~~ Shell Easy Uninstaller ~~~~~~~~~~~~~~~~\n"
 echo -e "\tRunning installation script...\n"
 echo -e "\t1. GNOME Shell version $SHELL_VERSION detected"
 
-# All supported versions use the same codebase
-cd src/v45-46-47-48-49-50
-
 echo -e "\t2. Creating extension directory..."
 mkdir -p "$EXTENSION_DIR"
 
-# Copiar archivos
+# Remove files left by older packages before installing the current source.
 echo -e "\t3. Copying extension files..."
-cp metadata.json "$EXTENSION_DIR/"
-cp *.js "$EXTENSION_DIR/"
+find "$EXTENSION_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
+cp "$SOURCE_DIR/metadata.json" "$EXTENSION_DIR/"
+cp "$SOURCE_DIR"/*.js "$EXTENSION_DIR/"
 
-# Copiar schemas if they exist, else skip
-if ls ../../schemas/*.xml 1> /dev/null 2>&1; then
+# Copy and compile schemas when present.
+if compgen -G "$SCHEMA_DIR/*.xml" > /dev/null; then
     echo -e "\t4. Copying schema files..."
     mkdir -p "$EXTENSION_DIR/schemas"
-    cp ../../schemas/*.xml "$EXTENSION_DIR/schemas/"
+    cp "$SCHEMA_DIR"/*.xml "$EXTENSION_DIR/schemas/"
 
     # Compilar schemas
     echo -e "\t5. Compiling schemas..."
