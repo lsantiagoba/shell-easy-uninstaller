@@ -13,6 +13,13 @@ FILES=(
     "extension.js"
     "utils.js"
     "metadata.json"
+    "prefs.js"
+    "AppUninstaller.js"
+    "CommandExecutor.js"
+    "DebAptHandler.js"
+    "FlatpakHandler.js"
+    "SnapHandler.js"
+    "translations.js"
 )
 
 # Copy files from source to root

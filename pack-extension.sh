@@ -27,6 +27,7 @@ FILES=(
     "extension.js"
     "utils.js"
     "metadata.json"
+    "prefs.js"
     "AppUninstaller.js"
     "CommandExecutor.js"
     "DebAptHandler.js"
@@ -52,6 +53,7 @@ if ls schemas/*.xml 1> /dev/null 2>&1; then
     echo -e "\t4. Copying schema files..."
     mkdir -p "$PACK_DIR/schemas"
     cp schemas/*.xml "$PACK_DIR/schemas/"
+    glib-compile-schemas "$PACK_DIR/schemas/"
     echo -e "\t   ✓ schemas copied"
 else
     echo -e "\t4. No schemas found. Skipping..."

@@ -10,7 +10,8 @@
         "49",
         "50"
     ],
-    "version": 1,
+    "version": 2,
+    "settings-schema": "org.gnome.shell.extensions.shell-easy-uninstaller",
     "url": "https://github.com/lsantiagoba/shell-easy-uninstaller",
     "donations": {
         "paypal": "leandrosb3"

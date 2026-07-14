@@ -1,33 +1,35 @@
-import Gio from 'gi://Gio';
-import GLib from 'gi://GLib';
-import St from 'gi://St';
-import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { AppMenu } from 'resource:///org/gnome/shell/ui/appMenu.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
-import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { InjectionManager } from 'resource:///org/gnome/shell/extensions/extensionUtils.js';
 
 import { uninstallApp } from './utils.js';
-import { _t } from './translations.js';
+import { _t, translator } from './translations.js';
 
 export default class DashUninstallExtension extends Extension {
     enable() {
-        this._injections = [];
-        
-        // Monkey patch AppMenu to add our "Uninstall" action
-        const origOpen = AppMenu.prototype.open;
-        const extension = this;
+        this._settings = this.getSettings();
+        translator.setLanguage(this._settings.get_string('language'));
+        this._languageChangedId = this._settings.connect('changed::language', () => {
+            translator.setLanguage(this._settings.get_string('language'));
+        });
 
-        AppMenu.prototype.open = function (animate) {
-            // Call original to open the menu
-            origOpen.call(this, animate);
+        this._injectionManager = new InjectionManager();
+        this._injectionManager.overrideMethod(AppMenu.prototype, 'open',
+            originalMethod => function (animate) {
+            originalMethod.call(this, animate);
             
             // At this point, the menu is populated with standard items.
             // Check if our item is already added to avoid duplicates.
-            const hasUninstall = this._getMenuItems().some(
+            const existingUninstallItem = this._getMenuItems().find(
                 item => item._isUninstallItem
             );
+
+            // Keep an existing menu item in sync when the preference changes.
+            if (existingUninstallItem)
+                existingUninstallItem.label.set_text(_t('uninstallButton'));
             
-            if (!hasUninstall && this._app) {
+            if (!existingUninstallItem && this._app) {
                 const app = this._app;
                 
                 // Add a separator
@@ -50,21 +52,15 @@ export default class DashUninstallExtension extends Extension {
                 
                 this.addMenuItem(uninstallItem);
             }
-        };
-
-        this._injections.push({
-            obj: AppMenu.prototype,
-            method: 'open',
-            orig: origOpen,
         });
     }
 
     disable() {
-        // Restore injected methods
-        for (const inj of this._injections) {
-            inj.obj[inj.method] = inj.orig;
-        }
-        this._injections = [];
+        this._injectionManager?.clear();
+        this._injectionManager = null;
+        if (this._languageChangedId)
+            this._settings.disconnect(this._languageChangedId);
+        this._languageChangedId = null;
+        this._settings = null;
     }
 }
-
