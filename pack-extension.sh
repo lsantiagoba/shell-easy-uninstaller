@@ -8,6 +8,8 @@ EXTENSION_UUID="shell-easy-uninstaller@lsantiagoba"
 PACK_DIR="pack"
 OUTPUT_FILE="${EXTENSION_UUID}.zip"
 SOURCE_DIR="src/v45-46-47-48-49-50"
+PO_DIR="po"
+GETTEXT_DOMAIN="shell-easy-uninstaller"
 
 echo -e "\n\n\t~~~~~~~~~~~~~~~~ Shell Easy Uninstaller ~~~~~~~~~~~~~~~~\n"
 echo -e "\t📦 Packaging GNOME extension...\n"
@@ -27,13 +29,11 @@ FILES=(
     "extension.js"
     "utils.js"
     "metadata.json"
-    "prefs.js"
     "AppUninstaller.js"
     "CommandExecutor.js"
     "DebAptHandler.js"
     "FlatpakHandler.js"
     "SnapHandler.js"
-    "translations.js"
 )
 
 # Copy necessary files from source directory
@@ -48,15 +48,18 @@ for file in "${FILES[@]}"; do
     fi
 done
 
-# Copy schema files if they exist
-if ls schemas/*.xml 1> /dev/null 2>&1; then
-    echo -e "\t4. Copying schema files..."
-    mkdir -p "$PACK_DIR/schemas"
-    cp schemas/*.xml "$PACK_DIR/schemas/"
-    echo -e "\t   ✓ schemas copied"
-else
-    echo -e "\t4. No schemas found. Skipping..."
+# Compile gettext catalogs in the layout expected by GNOME Shell.
+echo -e "\t4. Compiling translations..."
+if ! command -v msgfmt > /dev/null 2>&1; then
+    echo -e "\t   ❌ gettext (msgfmt) is required to package translations"
+    exit 1
 fi
+for language in $(cat "$PO_DIR/LINGUAS"); do
+    locale_dir="$PACK_DIR/locale/$language/LC_MESSAGES"
+    mkdir -p "$locale_dir"
+    msgfmt "$PO_DIR/$language.po" -o "$locale_dir/$GETTEXT_DOMAIN.mo"
+done
+echo -e "\t   ✓ translations compiled"
 
 # Create the .zip file
 echo -e "\t5. Creating ${OUTPUT_FILE}..."

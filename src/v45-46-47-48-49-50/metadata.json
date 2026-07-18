@@ -11,7 +11,7 @@
         "50"
     ],
     "version": 5,
-    "settings-schema": "org.gnome.shell.extensions.shell-easy-uninstaller",
+    "gettext-domain": "shell-easy-uninstaller",
     "url": "https://github.com/lsantiagoba/shell-easy-uninstaller",
     "donations": {
         "paypal": "leandrosb3"

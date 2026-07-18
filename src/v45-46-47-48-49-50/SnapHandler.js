@@ -1,6 +1,6 @@
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import { CommandExecutor } from './CommandExecutor.js';
-import { _t } from './translations.js';
 
 export class SnapHandler {
     static match(appInfo, desktopFile, desktopId) {
@@ -30,10 +30,12 @@ export class SnapHandler {
         
         if (snapName) {
             const uninstallCmd = ['snap', 'remove', snapName];
-            Main.notify(_t('uninstallingSnap', app.get_name()), _t('command', uninstallCmd.join(' ')));
+            Main.notify(_('Uninstalling Snap: %s').format(app.get_name()),
+                _('Command: %s').format(uninstallCmd.join(' ')));
             CommandExecutor.executePolkit(uninstallCmd);
         } else {
-            Main.notifyError(_t('appName'), _t('couldNotDetermineSnap', app.get_name()));
+            Main.notifyError(_('Shell Easy Uninstaller'),
+                _('Could not determine Snap name for %s').format(app.get_name()));
         }
     }
 }

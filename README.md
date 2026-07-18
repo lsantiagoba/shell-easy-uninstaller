@@ -7,11 +7,7 @@ A GNOME Shell extension that adds a quick and convenient "Uninstall" option to t
 - **Quick Uninstallation:** Remove applications directly from the GNOME Shell Dash and App Grid by right-clicking on their icons.
 - **Multi-Package Support:** Seamlessly detects and uninstalls **Flatpak**, **Snap**, and **APT (.deb)** packages.
 - **Native Integration:** Blends perfectly with the default GNOME Shell UI.
-- **Language Settings:** Follow the system language automatically or select English, Spanish, French, German, Italian, Portuguese, Chinese, Russian, Japanese, Korean, or Arabic.
-
-## Settings
-
-Open the extension's preferences from Extensions or Extension Manager and choose a display language. The setting controls the options menu, the **Uninstall** action, and extension notifications.
+- **Localized UI:** Uses standard gettext catalogs and follows the system language automatically.
 
 ## Supported GNOME Shell Versions
 
@@ -34,6 +30,7 @@ Open the extension's preferences from Extensions or Extension Manager and choose
 
 2. Run the provided installation script:
    ```bash
+   # Debian/Ubuntu: sudo apt install gettext
    ./install.sh
    ```
 

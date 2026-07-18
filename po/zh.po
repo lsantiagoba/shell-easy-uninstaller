@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: shell-easy-uninstaller\n"
+"Language: zh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Uninstall"
+msgstr "卸载"
+
+msgid "Uninstalling Deb: %s"
+msgstr "正在卸载 Deb：%s"
+
+msgid "Uninstalling Flatpak: %s"
+msgstr "正在卸载 Flatpak：%s"
+
+msgid "Uninstalling Snap: %s"
+msgstr "正在卸载 Snap：%s"
+
+msgid "Command: %s"
+msgstr "命令：%s"
+
+msgid "Shell Easy Uninstaller"
+msgstr "Shell Easy Uninstaller"
+
+msgid "Could not determine Snap name for %s"
+msgstr "无法确定 %s 的 Snap 名称"
+
+msgid "Uninstallation completed successfully."
+msgstr "卸载成功完成。"
+
+msgid "Uninstallation failed: %s"
+msgstr "卸载失败：%s"
+
+msgid "Error launching uninstaller: %s"
+msgstr "启动卸载程序时出错：%s"
+

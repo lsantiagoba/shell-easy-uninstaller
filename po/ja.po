@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: shell-easy-uninstaller\n"
+"Language: ja\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Uninstall"
+msgstr "アンインストール"
+
+msgid "Uninstalling Deb: %s"
+msgstr "Deb をアンインストール中: %s"
+
+msgid "Uninstalling Flatpak: %s"
+msgstr "Flatpak をアンインストール中: %s"
+
+msgid "Uninstalling Snap: %s"
+msgstr "Snap をアンインストール中: %s"
+
+msgid "Command: %s"
+msgstr "コマンド: %s"
+
+msgid "Shell Easy Uninstaller"
+msgstr "Shell Easy Uninstaller"
+
+msgid "Could not determine Snap name for %s"
+msgstr "%s の Snap 名を特定できませんでした"
+
+msgid "Uninstallation completed successfully."
+msgstr "アンインストールが完了しました。"
+
+msgid "Uninstallation failed: %s"
+msgstr "アンインストールに失敗しました: %s"
+
+msgid "Error launching uninstaller: %s"
+msgstr "アンインストーラーの起動エラー: %s"
+

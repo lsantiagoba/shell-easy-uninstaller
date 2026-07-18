@@ -3,19 +3,13 @@ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import {
     Extension,
     InjectionManager,
+    gettext as _,
 } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 import { uninstallApp } from './utils.js';
-import { _t, translator } from './translations.js';
 
 export default class DashUninstallExtension extends Extension {
     enable() {
-        this._settings = this.getSettings();
-        translator.setLanguage(this._settings.get_string('language'));
-        this._languageChangedId = this._settings.connect('changed::language', () => {
-            translator.setLanguage(this._settings.get_string('language'));
-        });
-
         this._injectionManager = new InjectionManager();
         this._injectionManager.overrideMethod(AppMenu.prototype, 'open',
             originalMethod => function (animate) {
@@ -27,9 +21,9 @@ export default class DashUninstallExtension extends Extension {
                 item => item._isUninstallItem
             );
 
-            // Keep an existing menu item in sync when the preference changes.
+            // Keep an existing menu item in sync with the active locale.
             if (existingUninstallItem)
-                existingUninstallItem.label.set_text(_t('uninstallButton'));
+                existingUninstallItem.label.set_text(_('Uninstall'));
             
             if (!existingUninstallItem && this._app) {
                 const app = this._app;
@@ -38,7 +32,7 @@ export default class DashUninstallExtension extends Extension {
                 this.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
                 
                 // Add Uninstall item
-                const uninstallItem = new PopupMenu.PopupMenuItem(_t('uninstallButton'));
+                const uninstallItem = new PopupMenu.PopupMenuItem(_('Uninstall'));
                 uninstallItem._isUninstallItem = true; // Mark it
                 
                 // Make it look destructive (optional styling)
@@ -60,9 +54,5 @@ export default class DashUninstallExtension extends Extension {
     disable() {
         this._injectionManager?.clear();
         this._injectionManager = null;
-        if (this._languageChangedId)
-            this._settings.disconnect(this._languageChangedId);
-        this._languageChangedId = null;
-        this._settings = null;
     }
 }

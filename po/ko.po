@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: shell-easy-uninstaller\n"
+"Language: ko\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Uninstall"
+msgstr "제거"
+
+msgid "Uninstalling Deb: %s"
+msgstr "Deb 제거 중: %s"
+
+msgid "Uninstalling Flatpak: %s"
+msgstr "Flatpak 제거 중: %s"
+
+msgid "Uninstalling Snap: %s"
+msgstr "Snap 제거 중: %s"
+
+msgid "Command: %s"
+msgstr "명령: %s"
+
+msgid "Shell Easy Uninstaller"
+msgstr "Shell Easy Uninstaller"
+
+msgid "Could not determine Snap name for %s"
+msgstr "%s의 Snap 이름을 확인할 수 없습니다"
+
+msgid "Uninstallation completed successfully."
+msgstr "제거를 완료했습니다."
+
+msgid "Uninstallation failed: %s"
+msgstr "제거 실패: %s"
+
+msgid "Error launching uninstaller: %s"
+msgstr "제거 프로그램 실행 오류: %s"
+

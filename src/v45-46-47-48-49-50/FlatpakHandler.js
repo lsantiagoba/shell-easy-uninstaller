@@ -1,6 +1,6 @@
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import { CommandExecutor } from './CommandExecutor.js';
-import { _t } from './translations.js';
 
 export class FlatpakHandler {
     static match(appInfo, desktopFile, desktopId) {
@@ -11,7 +11,8 @@ export class FlatpakHandler {
     static uninstall(app, appInfo) {
         const flatpakId = appInfo.get_id().replace('.desktop', '');
         const uninstallCmd = ['flatpak', 'uninstall', '-y', flatpakId];
-        Main.notify(_t('uninstallingFlatpak', app.get_name()), _t('command', uninstallCmd.join(' ')));
+        Main.notify(_('Uninstalling Flatpak: %s').format(app.get_name()),
+            _('Command: %s').format(uninstallCmd.join(' ')));
         CommandExecutor.executePolkit(uninstallCmd);
     }
 }

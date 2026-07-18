@@ -1,7 +1,7 @@
 import Gio from 'gi://Gio';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import { CommandExecutor } from './CommandExecutor.js';
-import { _t } from './translations.js';
 
 export class DebAptHandler {
     static uninstall(app, desktopFile, desktopId) {
@@ -45,7 +45,8 @@ export class DebAptHandler {
 
     static _uninstallPackage(app, pkgName) {
         const uninstallCmd = ['apt-get', 'remove', '-y', pkgName];
-        Main.notify(_t('uninstallingDeb', app.get_name()), _t('command', `apt-get remove ${pkgName}`));
+        Main.notify(_('Uninstalling Deb: %s').format(app.get_name()),
+            _('Command: %s').format(`apt-get remove ${pkgName}`));
         CommandExecutor.executePolkit(uninstallCmd);
     }
 }
