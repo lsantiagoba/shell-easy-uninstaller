@@ -3,13 +3,18 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 export class CommandExecutor {
+    static execute(cmdArgs) {
+        this._execute(cmdArgs);
+    }
+
     static executePolkit(cmdArgs) {
+        this._execute(['pkexec'].concat(cmdArgs));
+    }
+
+    static _execute(cmdArgs) {
         try {
-            // Use pkexec to prompt for password and run as root if needed
-            let fullCmd = ['pkexec'].concat(cmdArgs);
-            
             const proc = Gio.Subprocess.new(
-                fullCmd,
+                cmdArgs,
                 Gio.SubprocessFlags.NONE
             );
             

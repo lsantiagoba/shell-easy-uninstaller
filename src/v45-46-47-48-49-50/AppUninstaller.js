@@ -19,7 +19,7 @@ export class AppUninstaller {
 
     uninstall() {
         if (FlatpakHandler.match(this.appInfo, this.desktopFile, this.desktopId)) {
-            FlatpakHandler.uninstall(this.app, this.appInfo);
+            FlatpakHandler.uninstall(this.app, this.appInfo, this.desktopFile);
         } else if (SnapHandler.match(this.appInfo, this.desktopFile, this.desktopId)) {
             SnapHandler.uninstall(this.app, this.appInfo, this.desktopFile, this.desktopId);
         } else {
