@@ -1,3 +1,4 @@
+import { AppImageHandler } from './AppImageHandler.js';
 import { FlatpakHandler } from './FlatpakHandler.js';
 import { SnapHandler } from './SnapHandler.js';
 import { NativePackageHandler } from './NativePackageHandler.js';
@@ -6,7 +7,10 @@ import { NativePackageHandler } from './NativePackageHandler.js';
 //   title         notification title shown when the uninstall starts
 //   typeLabel     human readable package type (Flatpak, Snap, ...)
 //   packageName   identifier passed to the package manager
+//   details       optional extra lines shown in the confirmation dialog
 //   supportsPurge whether configuration files can be removed too
+//   purgeLabel    optional label for the purge option
+//   purgeForced   optional, the purge option is always applied
 //   commands      purge => [{argv, polkit}] steps run in order
 export class AppUninstaller {
     constructor(app) {
@@ -26,6 +30,9 @@ export class AppUninstaller {
     // Resolves to an uninstall plan, or to null when the app cannot be
     // uninstalled (the handler has already notified the user).
     async resolve() {
+        const appImagePath = AppImageHandler.findAppImage(this.appInfo);
+        if (appImagePath)
+            return AppImageHandler.resolve(this.app, appImagePath, this.desktopFile);
         if (FlatpakHandler.match(this.appInfo, this.desktopFile, this.desktopId))
             return FlatpakHandler.resolve(this.app, this.appInfo, this.desktopFile);
         if (SnapHandler.match(this.appInfo, this.desktopFile, this.desktopId))

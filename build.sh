@@ -22,6 +22,7 @@ FILES=(
     "prefs.js"
     "metadata.json"
     "AppUninstaller.js"
+    "AppImageHandler.js"
     "CommandExecutor.js"
     "NativePackageHandler.js"
     "FlatpakHandler.js"

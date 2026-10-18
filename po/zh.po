@@ -67,3 +67,15 @@ msgstr "卸载前确认"
 
 msgid "Show a dialog with the package details before removing an app."
 msgstr "在移除应用前显示包含软件包详情的对话框。"
+
+msgid "Uninstalling AppImage: %s"
+msgstr "正在卸载 AppImage：%s"
+
+msgid "Launcher: %s"
+msgstr "启动器：%s"
+
+msgid "Delete permanently instead of moving to Trash"
+msgstr "永久删除而不是移到回收站"
+
+msgid "Delete permanently (these files cannot be moved to Trash)"
+msgstr "永久删除（这些文件无法移到回收站）"

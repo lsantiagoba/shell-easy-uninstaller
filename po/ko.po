@@ -67,3 +67,15 @@ msgstr "제거하기 전에 확인"
 
 msgid "Show a dialog with the package details before removing an app."
 msgstr "앱을 제거하기 전에 패키지 정보가 담긴 대화 상자를 표시합니다."
+
+msgid "Uninstalling AppImage: %s"
+msgstr "AppImage 제거 중: %s"
+
+msgid "Launcher: %s"
+msgstr "실행기: %s"
+
+msgid "Delete permanently instead of moving to Trash"
+msgstr "휴지통으로 이동하지 않고 영구 삭제"
+
+msgid "Delete permanently (these files cannot be moved to Trash)"
+msgstr "영구 삭제 (이 파일들은 휴지통으로 이동할 수 없음)"

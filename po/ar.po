@@ -67,3 +67,15 @@ msgstr "التأكيد قبل إلغاء التثبيت"
 
 msgid "Show a dialog with the package details before removing an app."
 msgstr "عرض نافذة بتفاصيل الحزمة قبل إزالة التطبيق."
+
+msgid "Uninstalling AppImage: %s"
+msgstr "إلغاء تثبيت AppImage: %s"
+
+msgid "Launcher: %s"
+msgstr "المشغّل: %s"
+
+msgid "Delete permanently instead of moving to Trash"
+msgstr "الحذف نهائيًا بدلًا من النقل إلى المهملات"
+
+msgid "Delete permanently (these files cannot be moved to Trash)"
+msgstr "الحذف نهائيًا (لا يمكن نقل هذه الملفات إلى المهملات)"

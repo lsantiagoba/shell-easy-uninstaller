@@ -6,7 +6,7 @@ import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
 import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 // Asks the user to confirm an uninstall plan before it runs.
-// onConfirm is called with true when configuration files should be removed.
+// onConfirm is called with true when the plan's purge option is selected.
 export const UninstallDialog = GObject.registerClass(
 class UninstallDialog extends ModalDialog.ModalDialog {
     _init(app, plan, onConfirm) {
@@ -15,6 +15,7 @@ class UninstallDialog extends ModalDialog.ModalDialog {
         const description = [
             _('Package type: %s').format(plan.typeLabel),
             _('Package: %s').format(plan.packageName),
+            ...(plan.details ?? []),
         ].join('\n');
 
         const content = new Dialog.MessageDialogContent({
@@ -23,12 +24,17 @@ class UninstallDialog extends ModalDialog.ModalDialog {
         });
         this.contentLayout.add_child(content);
 
-        this._purgeCheckBox = new CheckBox(plan.supportsPurge
-            ? _('Remove configuration files')
-            : _('Remove configuration files (not supported for this package)'));
-        this._purgeCheckBox.reactive = plan.supportsPurge;
-        this._purgeCheckBox.can_focus = plan.supportsPurge;
+        let purgeLabel = plan.purgeLabel ?? _('Remove configuration files');
         if (!plan.supportsPurge)
+            purgeLabel = _('Remove configuration files (not supported for this package)');
+
+        // A forced option is shown checked but cannot be changed.
+        const editable = plan.supportsPurge && !plan.purgeForced;
+        this._purgeCheckBox = new CheckBox(purgeLabel);
+        this._purgeCheckBox.checked = Boolean(plan.purgeForced);
+        this._purgeCheckBox.reactive = editable;
+        this._purgeCheckBox.can_focus = editable;
+        if (!editable)
             this._purgeCheckBox.opacity = 128;
         this.contentLayout.add_child(this._purgeCheckBox);
 

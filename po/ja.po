@@ -67,3 +67,15 @@ msgstr "アンインストール前に確認する"
 
 msgid "Show a dialog with the package details before removing an app."
 msgstr "アプリを削除する前にパッケージの詳細を示すダイアログを表示します。"
+
+msgid "Uninstalling AppImage: %s"
+msgstr "AppImage をアンインストール中: %s"
+
+msgid "Launcher: %s"
+msgstr "ランチャー: %s"
+
+msgid "Delete permanently instead of moving to Trash"
+msgstr "ゴミ箱に移動せずに完全に削除する"
+
+msgid "Delete permanently (these files cannot be moved to Trash)"
+msgstr "完全に削除する (これらのファイルはゴミ箱に移動できません)"

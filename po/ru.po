@@ -67,3 +67,15 @@ msgstr "Подтверждать перед удалением"
 
 msgid "Show a dialog with the package details before removing an app."
 msgstr "Показывать диалог со сведениями о пакете перед удалением приложения."
+
+msgid "Uninstalling AppImage: %s"
+msgstr "Удаление AppImage: %s"
+
+msgid "Launcher: %s"
+msgstr "Ярлык: %s"
+
+msgid "Delete permanently instead of moving to Trash"
+msgstr "Удалить навсегда вместо перемещения в корзину"
+
+msgid "Delete permanently (these files cannot be moved to Trash)"
+msgstr "Удалить навсегда (эти файлы нельзя переместить в корзину)"

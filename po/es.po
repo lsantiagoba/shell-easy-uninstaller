@@ -67,3 +67,15 @@ msgstr "Confirmar antes de desinstalar"
 
 msgid "Show a dialog with the package details before removing an app."
 msgstr "Mostrar un diálogo con los detalles del paquete antes de eliminar una aplicación."
+
+msgid "Uninstalling AppImage: %s"
+msgstr "Desinstalando AppImage: %s"
+
+msgid "Launcher: %s"
+msgstr "Lanzador: %s"
+
+msgid "Delete permanently instead of moving to Trash"
+msgstr "Eliminar permanentemente en lugar de mover a la papelera"
+
+msgid "Delete permanently (these files cannot be moved to Trash)"
+msgstr "Eliminar permanentemente (estos archivos no se pueden mover a la papelera)"
