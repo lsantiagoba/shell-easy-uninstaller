@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Build script - Copies source files from src/v45-46-47-48-49-50-51 to root for packaging
+# Build script - Copies source files from src/v45-46-47-48-49-50 to root for packaging
 # Usage: ./build.sh
 
-SRC_DIR="src/v45-46-47-48-49-50-51"
+SRC_DIR="src/v45-46-47-48-49-50"
 PO_DIR="po"
 GETTEXT_DOMAIN="shell-easy-uninstaller"
 
