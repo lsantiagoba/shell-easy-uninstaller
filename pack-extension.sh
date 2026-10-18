@@ -7,7 +7,7 @@ set -e
 EXTENSION_UUID="shell-easy-uninstaller@lsantiagoba"
 PACK_DIR="pack"
 OUTPUT_FILE="${EXTENSION_UUID}.zip"
-SOURCE_DIR="src/v45-46-47-48-49-50-51"
+SOURCE_DIR="src/v45-46-47-48-49-50"
 PO_DIR="po"
 GETTEXT_DOMAIN="shell-easy-uninstaller"
 

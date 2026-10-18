@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Build script - Copies source files from src/v45-46-47-48-49-50-51 to root for packaging
+# Build script - Copies source files from src/v45-46-47-48-49-50 into build/
 # Usage: ./build.sh
 
-SRC_DIR="src/v45-46-47-48-49-50-51"
+SRC_DIR="src/v45-46-47-48-49-50"
 PO_DIR="po"
+BUILD_DIR="build"
 GETTEXT_DOMAIN="shell-easy-uninstaller"
 
 echo "🔨 Building extension..."
@@ -27,11 +28,15 @@ FILES=(
     "SnapHandler.js"
 )
 
-# Copy files from source to root
-echo "📋 Copying files from ${SRC_DIR} to root..."
+# Start from a clean build directory so removed files do not linger.
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR"
+
+# Copy files from source to the build directory
+echo "📋 Copying files from ${SRC_DIR} to ${BUILD_DIR}/..."
 for file in "${FILES[@]}"; do
     if [ -e "${SRC_DIR}/${file}" ]; then
-        cp "${SRC_DIR}/${file}" "./"
+        cp "${SRC_DIR}/${file}" "${BUILD_DIR}/"
         echo "  ✓ ${file}"
     else
         echo "  ⚠️  Warning: ${file} not found in ${SRC_DIR}"
@@ -40,13 +45,13 @@ done
 
 echo "🌐 Compiling translations..."
 for language in $(cat "$PO_DIR/LINGUAS"); do
-    locale_dir="locale/$language/LC_MESSAGES"
+    locale_dir="$BUILD_DIR/locale/$language/LC_MESSAGES"
     mkdir -p "$locale_dir"
     msgfmt "$PO_DIR/$language.po" -o "$locale_dir/$GETTEXT_DOMAIN.mo"
 done
 
 echo ""
-echo "✅ Build complete! Files are ready for installation or packaging."
+echo "✅ Build complete! Files are in ${BUILD_DIR}/."
 echo ""
 echo "Next steps:"
 echo "  - To install locally: ./install.sh"
