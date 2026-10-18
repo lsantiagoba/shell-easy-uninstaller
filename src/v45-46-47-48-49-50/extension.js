@@ -27,10 +27,7 @@ export default class DashUninstallExtension extends Extension {
             
             if (!existingUninstallItem && this._app) {
                 const app = this._app;
-                
-                // Add a separator
-                this.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-                
+
                 // Add Uninstall item
                 const uninstallItem = new PopupMenu.PopupMenuItem(_('Uninstall'));
                 uninstallItem._isUninstallItem = true; // Mark it
@@ -46,7 +43,13 @@ export default class DashUninstallExtension extends Extension {
                     uninstallApp(app);
                 });
                 
-                this.addMenuItem(uninstallItem);
+                // Place it right below "App Details" so "Quit" stays last.
+                // Fall back to appending if the details item is missing.
+                const detailsIndex = this._getMenuItems().indexOf(this._detailsItem);
+                if (detailsIndex >= 0)
+                    this.addMenuItem(uninstallItem, detailsIndex + 1);
+                else
+                    this.addMenuItem(uninstallItem);
             }
         });
     }
