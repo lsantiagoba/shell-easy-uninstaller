@@ -40,3 +40,30 @@ msgstr "无法确定提供 %s 的软件包"
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr "未找到可用于卸载 %s 的受支持的软件包管理器"
+
+msgid "Uninstall %s?"
+msgstr "要卸载 %s 吗？"
+
+msgid "Package type: %s"
+msgstr "软件包类型：%s"
+
+msgid "Package: %s"
+msgstr "软件包：%s"
+
+msgid "System package (%s)"
+msgstr "系统软件包 (%s)"
+
+msgid "Remove configuration files"
+msgstr "删除配置文件"
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr "删除配置文件（此软件包不支持）"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Confirm before uninstalling"
+msgstr "卸载前确认"
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr "在移除应用前显示包含软件包详情的对话框。"

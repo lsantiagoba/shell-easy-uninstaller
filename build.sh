@@ -19,13 +19,15 @@ fi
 # List of files to copy
 FILES=(
     "extension.js"
-    "utils.js"
+    "prefs.js"
     "metadata.json"
     "AppUninstaller.js"
     "CommandExecutor.js"
     "NativePackageHandler.js"
     "FlatpakHandler.js"
     "SnapHandler.js"
+    "UninstallDialog.js"
+    "schemas/org.gnome.shell.extensions.shell-easy-uninstaller.gschema.xml"
 )
 
 # Start from a clean build directory so removed files do not linger.
@@ -36,12 +38,21 @@ mkdir -p "$BUILD_DIR"
 echo "📋 Copying files from ${SRC_DIR} to ${BUILD_DIR}/..."
 for file in "${FILES[@]}"; do
     if [ -e "${SRC_DIR}/${file}" ]; then
-        cp "${SRC_DIR}/${file}" "${BUILD_DIR}/"
+        mkdir -p "${BUILD_DIR}/$(dirname "${file}")"
+        cp "${SRC_DIR}/${file}" "${BUILD_DIR}/${file}"
         echo "  ✓ ${file}"
     else
         echo "  ⚠️  Warning: ${file} not found in ${SRC_DIR}"
     fi
 done
+
+if ! command -v glib-compile-schemas > /dev/null 2>&1; then
+    echo "glib-compile-schemas is required to build the settings schema."
+    exit 1
+fi
+
+echo "⚙️  Compiling settings schema..."
+glib-compile-schemas "$BUILD_DIR/schemas"
 
 echo "🌐 Compiling translations..."
 for language in $(cat "$PO_DIR/LINGUAS"); do

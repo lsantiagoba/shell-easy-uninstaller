@@ -1,6 +1,5 @@
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
-import { CommandExecutor } from './CommandExecutor.js';
 
 export class SnapHandler {
     static match(appInfo, desktopFile, desktopId) {
@@ -8,7 +7,7 @@ export class SnapHandler {
         return commandLine.includes('snap run') || desktopFile.includes('/snapd/desktop/') || desktopId.startsWith('snap.');
     }
 
-    static uninstall(app, appInfo, desktopFile, desktopId) {
+    static resolve(app, appInfo, desktopFile, desktopId) {
         let snapName = "";
         const commandLine = appInfo.get_commandline() || "";
         
@@ -28,14 +27,22 @@ export class SnapHandler {
             snapName = desktopId.split('_')[0].split('.')[0];
         }
         
-        if (snapName) {
-            const uninstallCmd = ['snap', 'remove', snapName];
-            Main.notify(_('Uninstalling Snap: %s').format(app.get_name()),
-                _('Command: %s').format(uninstallCmd.join(' ')));
-            CommandExecutor.executePolkit(uninstallCmd);
-        } else {
+        if (!snapName) {
             Main.notifyError(_('Shell Easy Uninstaller'),
                 _('Could not determine Snap name for %s').format(app.get_name()));
+            return null;
         }
+
+        return {
+            title: _('Uninstalling Snap: %s').format(app.get_name()),
+            typeLabel: 'Snap',
+            packageName: snapName,
+            supportsPurge: true,
+            // --purge skips the automatic snapshot of the snap's data.
+            commands: purge => [{
+                argv: ['snap', 'remove', ...(purge ? ['--purge'] : []), snapName],
+                polkit: true,
+            }],
+        };
     }
 }

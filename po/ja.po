@@ -40,3 +40,30 @@ msgstr "%s を提供するパッケージを特定できませんでした"
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr "%s をアンインストールするための対応パッケージマネージャーが見つかりません"
+
+msgid "Uninstall %s?"
+msgstr "%s をアンインストールしますか？"
+
+msgid "Package type: %s"
+msgstr "パッケージの種類: %s"
+
+msgid "Package: %s"
+msgstr "パッケージ: %s"
+
+msgid "System package (%s)"
+msgstr "システムパッケージ (%s)"
+
+msgid "Remove configuration files"
+msgstr "設定ファイルを削除する"
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr "設定ファイルを削除する (このパッケージでは非対応)"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Confirm before uninstalling"
+msgstr "アンインストール前に確認する"
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr "アプリを削除する前にパッケージの詳細を示すダイアログを表示します。"

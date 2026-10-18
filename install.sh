@@ -26,6 +26,11 @@ if ! command -v msgfmt > /dev/null 2>&1; then
     exit 1
 fi
 
+if ! command -v glib-compile-schemas > /dev/null 2>&1; then
+    echo "glib-compile-schemas is required to install the settings schema."
+    exit 1
+fi
+
 echo -e "\n\n\t~~~~~~~~~~~~~~~~ Shell Easy Uninstaller ~~~~~~~~~~~~~~~~\n"
 echo -e "\tRunning installation script...\n"
 echo -e "\t1. GNOME Shell version $SHELL_VERSION detected"
@@ -38,6 +43,8 @@ echo -e "\t3. Copying extension files..."
 find "$EXTENSION_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
 cp "$SOURCE_DIR/metadata.json" "$EXTENSION_DIR/"
 cp "$SOURCE_DIR"/*.js "$EXTENSION_DIR/"
+cp -r "$SOURCE_DIR/schemas" "$EXTENSION_DIR/"
+glib-compile-schemas "$EXTENSION_DIR/schemas"
 
 # Compile gettext catalogs in the layout expected by GNOME Shell.
 echo -e "\t4. Compiling translations..."

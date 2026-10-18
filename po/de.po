@@ -40,3 +40,30 @@ msgstr "Das Paket, das %s bereitstellt, konnte nicht ermittelt werden"
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr "Es wurde keine unterstützte Paketverwaltung gefunden, um %s zu deinstallieren"
+
+msgid "Uninstall %s?"
+msgstr "%s deinstallieren?"
+
+msgid "Package type: %s"
+msgstr "Pakettyp: %s"
+
+msgid "Package: %s"
+msgstr "Paket: %s"
+
+msgid "System package (%s)"
+msgstr "Systempaket (%s)"
+
+msgid "Remove configuration files"
+msgstr "Konfigurationsdateien entfernen"
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr "Konfigurationsdateien entfernen (für dieses Paket nicht unterstützt)"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Confirm before uninstalling"
+msgstr "Vor dem Deinstallieren bestätigen"
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr "Vor dem Entfernen einer Anwendung einen Dialog mit den Paketdetails anzeigen."

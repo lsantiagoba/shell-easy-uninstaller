@@ -40,3 +40,30 @@ msgstr "Не удалось определить пакет, предостав�
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr "Не найден поддерживаемый менеджер пакетов для удаления %s"
+
+msgid "Uninstall %s?"
+msgstr "Удалить %s?"
+
+msgid "Package type: %s"
+msgstr "Тип пакета: %s"
+
+msgid "Package: %s"
+msgstr "Пакет: %s"
+
+msgid "System package (%s)"
+msgstr "Системный пакет (%s)"
+
+msgid "Remove configuration files"
+msgstr "Удалить файлы конфигурации"
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr "Удалить файлы конфигурации (не поддерживается для этого пакета)"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Confirm before uninstalling"
+msgstr "Подтверждать перед удалением"
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr "Показывать диалог со сведениями о пакете перед удалением приложения."

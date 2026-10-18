@@ -27,19 +27,22 @@ mkdir -p "$PACK_DIR"
 # List of files to include
 FILES=(
     "extension.js"
-    "utils.js"
+    "prefs.js"
     "metadata.json"
     "AppUninstaller.js"
     "CommandExecutor.js"
     "NativePackageHandler.js"
     "FlatpakHandler.js"
     "SnapHandler.js"
+    "UninstallDialog.js"
+    "schemas/org.gnome.shell.extensions.shell-easy-uninstaller.gschema.xml"
 )
 
 # Copy necessary files from source directory
 echo -e "\t3. Copying extension files..."
 for file in "${FILES[@]}"; do
     if [ -e "$SOURCE_DIR/$file" ]; then
+        mkdir -p "$PACK_DIR/$(dirname "$file")"
         cp "$SOURCE_DIR/$file" "$PACK_DIR/$file"
         echo -e "\t   ✓ $file"
     else

@@ -6,6 +6,7 @@ A GNOME Shell extension that adds a quick and convenient "Uninstall" option to t
 
 - **Quick Uninstallation:** Remove applications directly from the GNOME Shell Dash and App Grid by right-clicking on their icons.
 - **Multi-Package Support:** Seamlessly detects and uninstalls **Flatpak** and **Snap** apps, plus native packages via **APT/dpkg** (Debian, Ubuntu), **DNF/RPM** (Fedora, RHEL), **rpm-ostree** (Fedora Silverblue/Kinoite), **Zypper** (openSUSE) and **Pacman** (Arch, Manjaro).
+- **Confirmation Dialog:** Shows the package type and name before uninstalling, with an option to also remove configuration files (Flatpak, Snap, APT/dpkg and Pacman). It can be turned off in the extension's settings.
 - **Native Integration:** Blends perfectly with the default GNOME Shell UI.
 - **Localized UI:** Uses standard gettext catalogs and follows the system language automatically.
 

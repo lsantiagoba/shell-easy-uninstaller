@@ -2,6 +2,12 @@ import { FlatpakHandler } from './FlatpakHandler.js';
 import { SnapHandler } from './SnapHandler.js';
 import { NativePackageHandler } from './NativePackageHandler.js';
 
+// An uninstall plan describes what will be removed before anything runs:
+//   title         notification title shown when the uninstall starts
+//   typeLabel     human readable package type (Flatpak, Snap, ...)
+//   packageName   identifier passed to the package manager
+//   supportsPurge whether configuration files can be removed too
+//   commands      purge => [{argv, polkit}] steps run in order
 export class AppUninstaller {
     constructor(app) {
         this.app = app;
@@ -17,14 +23,14 @@ export class AppUninstaller {
         return "";
     }
 
-    uninstall() {
-        if (FlatpakHandler.match(this.appInfo, this.desktopFile, this.desktopId)) {
-            FlatpakHandler.uninstall(this.app, this.appInfo, this.desktopFile);
-        } else if (SnapHandler.match(this.appInfo, this.desktopFile, this.desktopId)) {
-            SnapHandler.uninstall(this.app, this.appInfo, this.desktopFile, this.desktopId);
-        } else {
-            // Fallback to the system package manager (apt, dnf, zypper, pacman...)
-            NativePackageHandler.uninstall(this.app, this.desktopFile);
-        }
+    // Resolves to an uninstall plan, or to null when the app cannot be
+    // uninstalled (the handler has already notified the user).
+    async resolve() {
+        if (FlatpakHandler.match(this.appInfo, this.desktopFile, this.desktopId))
+            return FlatpakHandler.resolve(this.app, this.appInfo, this.desktopFile);
+        if (SnapHandler.match(this.appInfo, this.desktopFile, this.desktopId))
+            return SnapHandler.resolve(this.app, this.appInfo, this.desktopFile, this.desktopId);
+        // Fallback to the system package manager (apt, dnf, zypper, pacman...)
+        return NativePackageHandler.resolve(this.app, this.desktopFile);
     }
 }

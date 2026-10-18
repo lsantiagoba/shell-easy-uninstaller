@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.shell-easy-uninstaller"
+            path="/org/gnome/shell/extensions/shell-easy-uninstaller/">
+        <key name="confirm-uninstall" type="b">
+            <default>true</default>
+            <summary>Confirm before uninstalling</summary>
+            <description>Show a confirmation dialog with the package details before removing an application.</description>
+        </key>
+    </schema>
+</schemalist>

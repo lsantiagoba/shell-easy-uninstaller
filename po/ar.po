@@ -40,3 +40,30 @@ msgstr "تعذّر تحديد الحزمة التي توفر %s"
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr "لم يتم العثور على مدير حزم مدعوم لإلغاء تثبيت %s"
+
+msgid "Uninstall %s?"
+msgstr "إلغاء تثبيت %s؟"
+
+msgid "Package type: %s"
+msgstr "نوع الحزمة: %s"
+
+msgid "Package: %s"
+msgstr "الحزمة: %s"
+
+msgid "System package (%s)"
+msgstr "حزمة النظام (%s)"
+
+msgid "Remove configuration files"
+msgstr "إزالة ملفات الإعدادات"
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr "إزالة ملفات الإعدادات (غير مدعوم لهذه الحزمة)"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Confirm before uninstalling"
+msgstr "التأكيد قبل إلغاء التثبيت"
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr "عرض نافذة بتفاصيل الحزمة قبل إزالة التطبيق."

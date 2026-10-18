@@ -1,7 +1,5 @@
-import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import GLib from 'gi://GLib';
 import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
-import { CommandExecutor } from './CommandExecutor.js';
 
 export class FlatpakHandler {
     static match(appInfo, desktopFile, desktopId) {
@@ -9,7 +7,7 @@ export class FlatpakHandler {
         return commandLine.includes('flatpak run') || desktopFile.includes('flatpak') || desktopId.includes('.flatpak.');
     }
 
-    static uninstall(app, appInfo, desktopFile) {
+    static resolve(app, appInfo, desktopFile) {
         const flatpakId = appInfo.get_id().replace('.desktop', '');
         const userFlatpakDirectory = GLib.build_filenamev([
             GLib.get_user_data_dir(),
@@ -18,19 +16,30 @@ export class FlatpakHandler {
         const isUserInstallation = desktopFile === userFlatpakDirectory ||
             desktopFile.startsWith(`${userFlatpakDirectory}/`);
         const installationFlag = isUserInstallation ? '--user' : '--system';
-        const uninstallCmd = [
-            'flatpak',
-            'uninstall',
-            installationFlag,
-            '-y',
-            flatpakId,
-        ];
-        Main.notify(_('Uninstalling Flatpak: %s').format(app.get_name()),
-            _('Command: %s').format(uninstallCmd.join(' ')));
 
-        if (isUserInstallation)
-            CommandExecutor.execute(uninstallCmd);
-        else
-            CommandExecutor.executePolkit(uninstallCmd);
+        return {
+            title: _('Uninstalling Flatpak: %s').format(app.get_name()),
+            typeLabel: 'Flatpak',
+            packageName: flatpakId,
+            supportsPurge: true,
+            commands: purge => {
+                const uninstallCmd = ['flatpak', 'uninstall', installationFlag, '-y'];
+
+                // --delete-data removes ~/.var/app/<id> of the user running
+                // flatpak, which is root for system installs run via pkexec.
+                if (purge && isUserInstallation)
+                    uninstallCmd.push('--delete-data');
+                uninstallCmd.push(flatpakId);
+
+                const steps = [{argv: uninstallCmd, polkit: !isUserInstallation}];
+                if (purge && !isUserInstallation) {
+                    const dataDirectory = GLib.build_filenamev([
+                        GLib.get_home_dir(), '.var', 'app', flatpakId,
+                    ]);
+                    steps.push({argv: ['rm', '-rf', '--', dataDirectory], polkit: false});
+                }
+                return steps;
+            },
+        };
     }
 }

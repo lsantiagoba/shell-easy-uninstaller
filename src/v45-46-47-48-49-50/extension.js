@@ -6,10 +6,14 @@ import {
     gettext as _,
 } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-import { uninstallApp } from './utils.js';
+import { AppUninstaller } from './AppUninstaller.js';
+import { CommandExecutor } from './CommandExecutor.js';
+import { UninstallDialog } from './UninstallDialog.js';
 
 export default class DashUninstallExtension extends Extension {
     enable() {
+        const extension = this;
+        this._settings = this.getSettings();
         this._injectionManager = new InjectionManager();
         this._injectionManager.overrideMethod(AppMenu.prototype, 'open',
             originalMethod => function (animate) {
@@ -40,7 +44,8 @@ export default class DashUninstallExtension extends Extension {
                     this.close();
                     
                     // Trigger uninstall logic
-                    uninstallApp(app);
+                    extension._uninstall(app).catch(e =>
+                        logError(e, 'Failed to uninstall application'));
                 });
                 
                 // Place it right below "App Details" so "Quit" stays last.
@@ -54,7 +59,33 @@ export default class DashUninstallExtension extends Extension {
         });
     }
 
+    async _uninstall(app) {
+        const plan = await new AppUninstaller(app).resolve();
+
+        // The extension may have been disabled while the package was resolved.
+        if (!plan || !this._settings)
+            return;
+
+        if (!this._settings.get_boolean('confirm-uninstall')) {
+            CommandExecutor.runPlan(plan, false);
+            return;
+        }
+
+        this._dialog?.destroy();
+        const dialog = new UninstallDialog(app, plan,
+            purge => CommandExecutor.runPlan(plan, purge));
+        dialog.connect('destroy', () => {
+            if (this._dialog === dialog)
+                this._dialog = null;
+        });
+        this._dialog = dialog;
+        dialog.open();
+    }
+
     disable() {
+        this._dialog?.destroy();
+        this._dialog = null;
+        this._settings = null;
         this._injectionManager?.clear();
         this._injectionManager = null;
     }

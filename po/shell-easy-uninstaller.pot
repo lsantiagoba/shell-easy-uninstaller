@@ -39,3 +39,30 @@ msgstr ""
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr ""
+
+msgid "Uninstall %s?"
+msgstr ""
+
+msgid "Package type: %s"
+msgstr ""
+
+msgid "Package: %s"
+msgstr ""
+
+msgid "System package (%s)"
+msgstr ""
+
+msgid "Remove configuration files"
+msgstr ""
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Confirm before uninstalling"
+msgstr ""
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr ""

@@ -40,3 +40,30 @@ msgstr "Não foi possível determinar o pacote que fornece %s"
 
 msgid "No supported package manager was found to uninstall %s"
 msgstr "Nenhum gerenciador de pacotes compatível foi encontrado para desinstalar %s"
+
+msgid "Uninstall %s?"
+msgstr "Desinstalar %s?"
+
+msgid "Package type: %s"
+msgstr "Tipo de pacote: %s"
+
+msgid "Package: %s"
+msgstr "Pacote: %s"
+
+msgid "System package (%s)"
+msgstr "Pacote do sistema (%s)"
+
+msgid "Remove configuration files"
+msgstr "Remover arquivos de configuração"
+
+msgid "Remove configuration files (not supported for this package)"
+msgstr "Remover arquivos de configuração (não suportado para este pacote)"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Confirm before uninstalling"
+msgstr "Confirmar antes de desinstalar"
+
+msgid "Show a dialog with the package details before removing an app."
+msgstr "Mostrar uma caixa de diálogo com os detalhes do pacote antes de remover um aplicativo."
