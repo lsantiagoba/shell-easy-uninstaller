@@ -8,8 +8,8 @@ msgstr ""
 msgid "Uninstall"
 msgstr "إزالة التثبيت"
 
-msgid "Uninstalling Deb: %s"
-msgstr "جارٍ إزالة Deb: %s"
+msgid "Uninstalling package: %s"
+msgstr "جارٍ إلغاء تثبيت الحزمة: %s"
 
 msgid "Uninstalling Flatpak: %s"
 msgstr "جارٍ إزالة Flatpak: %s"
@@ -35,3 +35,8 @@ msgstr "فشلت إزالة التثبيت: %s"
 msgid "Error launching uninstaller: %s"
 msgstr "خطأ في تشغيل أداة إزالة التثبيت: %s"
 
+msgid "Could not determine the package that provides %s"
+msgstr "تعذّر تحديد الحزمة التي توفر %s"
+
+msgid "No supported package manager was found to uninstall %s"
+msgstr "لم يتم العثور على مدير حزم مدعوم لإلغاء تثبيت %s"

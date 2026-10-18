@@ -8,8 +8,8 @@ msgstr ""
 msgid "Uninstall"
 msgstr "Удалить"
 
-msgid "Uninstalling Deb: %s"
-msgstr "Удаление Deb: %s"
+msgid "Uninstalling package: %s"
+msgstr "Удаление пакета: %s"
 
 msgid "Uninstalling Flatpak: %s"
 msgstr "Удаление Flatpak: %s"
@@ -35,3 +35,8 @@ msgstr "Ошибка удаления: %s"
 msgid "Error launching uninstaller: %s"
 msgstr "Ошибка запуска программы удаления: %s"
 
+msgid "Could not determine the package that provides %s"
+msgstr "Не удалось определить пакет, предоставляющий %s"
+
+msgid "No supported package manager was found to uninstall %s"
+msgstr "Не найден поддерживаемый менеджер пакетов для удаления %s"

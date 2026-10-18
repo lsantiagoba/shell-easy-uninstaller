@@ -1,6 +1,6 @@
 import { FlatpakHandler } from './FlatpakHandler.js';
 import { SnapHandler } from './SnapHandler.js';
-import { DebAptHandler } from './DebAptHandler.js';
+import { NativePackageHandler } from './NativePackageHandler.js';
 
 export class AppUninstaller {
     constructor(app) {
@@ -23,8 +23,8 @@ export class AppUninstaller {
         } else if (SnapHandler.match(this.appInfo, this.desktopFile, this.desktopId)) {
             SnapHandler.uninstall(this.app, this.appInfo, this.desktopFile, this.desktopId);
         } else {
-            // Fallback to Deb/Apt
-            DebAptHandler.uninstall(this.app, this.desktopFile, this.desktopId);
+            // Fallback to the system package manager (apt, dnf, zypper, pacman...)
+            NativePackageHandler.uninstall(this.app, this.desktopFile);
         }
     }
 }

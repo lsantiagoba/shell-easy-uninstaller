@@ -7,7 +7,7 @@ msgstr ""
 msgid "Uninstall"
 msgstr ""
 
-msgid "Uninstalling Deb: %s"
+msgid "Uninstalling package: %s"
 msgstr ""
 
 msgid "Uninstalling Flatpak: %s"
@@ -34,3 +34,8 @@ msgstr ""
 msgid "Error launching uninstaller: %s"
 msgstr ""
 
+msgid "Could not determine the package that provides %s"
+msgstr ""
+
+msgid "No supported package manager was found to uninstall %s"
+msgstr ""
