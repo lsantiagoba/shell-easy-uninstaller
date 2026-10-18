@@ -8,8 +8,8 @@ msgstr ""
 msgid "Uninstall"
 msgstr "アンインストール"
 
-msgid "Uninstalling Deb: %s"
-msgstr "Deb をアンインストール中: %s"
+msgid "Uninstalling package: %s"
+msgstr "パッケージをアンインストール中: %s"
 
 msgid "Uninstalling Flatpak: %s"
 msgstr "Flatpak をアンインストール中: %s"
@@ -35,3 +35,8 @@ msgstr "アンインストールに失敗しました: %s"
 msgid "Error launching uninstaller: %s"
 msgstr "アンインストーラーの起動エラー: %s"
 
+msgid "Could not determine the package that provides %s"
+msgstr "%s を提供するパッケージを特定できませんでした"
+
+msgid "No supported package manager was found to uninstall %s"
+msgstr "%s をアンインストールするための対応パッケージマネージャーが見つかりません"

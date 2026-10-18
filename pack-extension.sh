@@ -31,7 +31,7 @@ FILES=(
     "metadata.json"
     "AppUninstaller.js"
     "CommandExecutor.js"
-    "DebAptHandler.js"
+    "NativePackageHandler.js"
     "FlatpakHandler.js"
     "SnapHandler.js"
 )

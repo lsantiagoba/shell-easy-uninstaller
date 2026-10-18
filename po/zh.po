@@ -8,8 +8,8 @@ msgstr ""
 msgid "Uninstall"
 msgstr "卸载"
 
-msgid "Uninstalling Deb: %s"
-msgstr "正在卸载 Deb：%s"
+msgid "Uninstalling package: %s"
+msgstr "正在卸载软件包：%s"
 
 msgid "Uninstalling Flatpak: %s"
 msgstr "正在卸载 Flatpak：%s"
@@ -35,3 +35,8 @@ msgstr "卸载失败：%s"
 msgid "Error launching uninstaller: %s"
 msgstr "启动卸载程序时出错：%s"
 
+msgid "Could not determine the package that provides %s"
+msgstr "无法确定提供 %s 的软件包"
+
+msgid "No supported package manager was found to uninstall %s"
+msgstr "未找到可用于卸载 %s 的受支持的软件包管理器"

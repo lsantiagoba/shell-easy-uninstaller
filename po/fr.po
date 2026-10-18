@@ -8,8 +8,8 @@ msgstr ""
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-msgid "Uninstalling Deb: %s"
-msgstr "Désinstallation de Deb : %s"
+msgid "Uninstalling package: %s"
+msgstr "Désinstallation du paquet : %s"
 
 msgid "Uninstalling Flatpak: %s"
 msgstr "Désinstallation de Flatpak : %s"
@@ -35,3 +35,8 @@ msgstr "Échec de la désinstallation : %s"
 msgid "Error launching uninstaller: %s"
 msgstr "Erreur lors du lancement du programme de désinstallation : %s"
 
+msgid "Could not determine the package that provides %s"
+msgstr "Impossible de déterminer le paquet qui fournit %s"
+
+msgid "No supported package manager was found to uninstall %s"
+msgstr "Aucun gestionnaire de paquets compatible n’a été trouvé pour désinstaller %s"
