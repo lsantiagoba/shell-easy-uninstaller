@@ -1,3 +1,4 @@
 shell-easy-uninstaller@lsbcodes.zip
 pack/
 *.zip
+build/
