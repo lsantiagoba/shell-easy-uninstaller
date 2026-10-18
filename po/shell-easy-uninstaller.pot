@@ -78,3 +78,9 @@ msgstr ""
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr ""
+
+msgid "Removing shortcut: %s"
+msgstr ""
+
+msgid "Custom shortcut"
+msgstr ""

@@ -79,3 +79,9 @@ msgstr "휴지통으로 이동하지 않고 영구 삭제"
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "영구 삭제 (이 파일들은 휴지통으로 이동할 수 없음)"
+
+msgid "Removing shortcut: %s"
+msgstr "바로 가기 제거 중: %s"
+
+msgid "Custom shortcut"
+msgstr "사용자 지정 바로 가기"

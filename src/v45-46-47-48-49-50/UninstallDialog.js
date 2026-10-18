@@ -12,11 +12,11 @@ class UninstallDialog extends ModalDialog.ModalDialog {
     _init(app, plan, onConfirm) {
         super._init();
 
-        const description = [
-            _('Package type: %s').format(plan.typeLabel),
-            _('Package: %s').format(plan.packageName),
-            ...(plan.details ?? []),
-        ].join('\n');
+        const lines = [_('Package type: %s').format(plan.typeLabel)];
+        if (plan.packageName)
+            lines.push(_('Package: %s').format(plan.packageName));
+        lines.push(...plan.details ?? []);
+        const description = lines.join('\n');
 
         const content = new Dialog.MessageDialogContent({
             title: _('Uninstall %s?').format(app.get_name()),

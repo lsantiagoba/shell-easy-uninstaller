@@ -79,3 +79,9 @@ msgstr "Excluir permanentemente em vez de mover para a lixeira"
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "Excluir permanentemente (estes arquivos não podem ser movidos para a lixeira)"
+
+msgid "Removing shortcut: %s"
+msgstr "Removendo atalho: %s"
+
+msgid "Custom shortcut"
+msgstr "Atalho personalizado"

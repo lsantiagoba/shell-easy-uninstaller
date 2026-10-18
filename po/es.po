@@ -79,3 +79,9 @@ msgstr "Eliminar permanentemente en lugar de mover a la papelera"
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "Eliminar permanentemente (estos archivos no se pueden mover a la papelera)"
+
+msgid "Removing shortcut: %s"
+msgstr "Eliminando acceso directo: %s"
+
+msgid "Custom shortcut"
+msgstr "Acceso directo personalizado"

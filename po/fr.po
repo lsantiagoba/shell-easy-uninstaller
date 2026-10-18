@@ -79,3 +79,9 @@ msgstr "Supprimer définitivement au lieu de mettre à la corbeille"
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "Supprimer définitivement (ces fichiers ne peuvent pas être mis à la corbeille)"
+
+msgid "Removing shortcut: %s"
+msgstr "Suppression du raccourci : %s"
+
+msgid "Custom shortcut"
+msgstr "Raccourci personnalisé"

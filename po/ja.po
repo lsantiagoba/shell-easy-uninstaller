@@ -79,3 +79,9 @@ msgstr "ゴミ箱に移動せずに完全に削除する"
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "完全に削除する (これらのファイルはゴミ箱に移動できません)"
+
+msgid "Removing shortcut: %s"
+msgstr "ショートカットを削除中: %s"
+
+msgid "Custom shortcut"
+msgstr "カスタムショートカット"

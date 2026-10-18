@@ -1,4 +1,5 @@
 import { AppImageHandler } from './AppImageHandler.js';
+import { CustomShortcutHandler } from './CustomShortcutHandler.js';
 import { FlatpakHandler } from './FlatpakHandler.js';
 import { SnapHandler } from './SnapHandler.js';
 import { NativePackageHandler } from './NativePackageHandler.js';
@@ -6,7 +7,7 @@ import { NativePackageHandler } from './NativePackageHandler.js';
 // An uninstall plan describes what will be removed before anything runs:
 //   title         notification title shown when the uninstall starts
 //   typeLabel     human readable package type (Flatpak, Snap, ...)
-//   packageName   identifier passed to the package manager
+//   packageName   identifier passed to the package manager, or null
 //   details       optional extra lines shown in the confirmation dialog
 //   supportsPurge whether configuration files can be removed too
 //   purgeLabel    optional label for the purge option
@@ -37,6 +38,9 @@ export class AppUninstaller {
             return FlatpakHandler.resolve(this.app, this.appInfo, this.desktopFile);
         if (SnapHandler.match(this.appInfo, this.desktopFile, this.desktopId))
             return SnapHandler.resolve(this.app, this.appInfo, this.desktopFile, this.desktopId);
+        // Launchers in ~/.local/share/applications are never owned by a package.
+        if (CustomShortcutHandler.match(this.desktopFile))
+            return CustomShortcutHandler.resolve(this.app, this.desktopFile);
         // Fallback to the system package manager (apt, dnf, zypper, pacman...)
         return NativePackageHandler.resolve(this.app, this.desktopFile);
     }

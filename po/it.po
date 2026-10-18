@@ -79,3 +79,9 @@ msgstr "Elimina definitivamente invece di spostare nel cestino"
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "Elimina definitivamente (questi file non possono essere spostati nel cestino)"
+
+msgid "Removing shortcut: %s"
+msgstr "Rimozione della scorciatoia: %s"
+
+msgid "Custom shortcut"
+msgstr "Scorciatoia personalizzata"

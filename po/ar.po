@@ -79,3 +79,9 @@ msgstr "الحذف نهائيًا بدلًا من النقل إلى المهمل
 
 msgid "Delete permanently (these files cannot be moved to Trash)"
 msgstr "الحذف نهائيًا (لا يمكن نقل هذه الملفات إلى المهملات)"
+
+msgid "Removing shortcut: %s"
+msgstr "إزالة الاختصار: %s"
+
+msgid "Custom shortcut"
+msgstr "اختصار مخصص"
