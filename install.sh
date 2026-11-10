@@ -6,7 +6,7 @@ set -e
 EXTENSION_UUID="shell-easy-uninstaller@lsantiagoba"
 EXTENSION_DIR="$HOME/.local/share/gnome-shell/extensions/$EXTENSION_UUID"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-SOURCE_DIR="$SCRIPT_DIR/src/v45-46-47-48-49-50"
+SOURCE_DIR="$SCRIPT_DIR/src/v45-46-47-48-49-50-51"
 PO_DIR="$SCRIPT_DIR/po"
 GETTEXT_DOMAIN="shell-easy-uninstaller"
 
